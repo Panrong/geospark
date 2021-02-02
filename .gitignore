@@ -1,5 +1,5 @@
 target/
-src/test/resources/proto_taxi.geojson
+src/test/resources/porto_taxi.geojson
 .idea/
 null
 project
