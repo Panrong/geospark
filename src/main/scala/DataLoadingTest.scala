@@ -13,7 +13,8 @@ object DataLoadingTest {
     val spark = SparkSession
       .builder()
       .appName("DataLoadingTest")
-      .master("local[4]")
+//      .master("local[4]")
+      .master("spark://Master:7077")
       .config("spark.serializer", classOf[KryoSerializer].getName)
       .config("spark.kryo.registrator", classOf[GeoSparkKryoRegistrator].getName)
       .getOrCreate()
