@@ -17,7 +17,7 @@ object GeoSparkRangeQuery {
     Logger.getLogger("org").setLevel(Level.WARN)
     Logger.getLogger("akka").setLevel(Level.WARN)
 
-    val conf = new SparkConf().setAppName("GeoSparkRunnableExample").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("GeoSparkRangeQuery")
     conf.set("spark.serializer", classOf[KryoSerializer].getName)
     conf.set("spark.kryo.registrator", classOf[GeoSparkKryoRegistrator].getName)
     val sc = new SparkContext(conf)
