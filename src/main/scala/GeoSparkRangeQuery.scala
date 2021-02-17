@@ -17,6 +17,7 @@ object GeoSparkRangeQuery {
     Logger.getLogger("org").setLevel(Level.WARN)
     Logger.getLogger("akka").setLevel(Level.WARN)
 
+//    val conf = new SparkConf().setAppName("GeoSparkRangeQuery").setMaster("local[*]")
     val conf = new SparkConf().setAppName("GeoSparkRangeQuery")
     conf.set("spark.serializer", classOf[KryoSerializer].getName)
     conf.set("spark.kryo.registrator", classOf[GeoSparkKryoRegistrator].getName)
@@ -38,11 +39,11 @@ object GeoSparkRangeQuery {
     // execution
     testSpatialRangeQuery()
     //  testSpatialTemporalRangeQuery()
-    //  testSpatialRangeQueryUsingIndex()
+    testSpatialRangeQueryUsingIndex()
     sc.stop()
 
     def testSpatialTemporalRangeQuery() {
-      println("In function testSpatialRangeQuery: ")
+      println("In function testSpatialTemporalRangeQuery: ")
       var t = nanoTime()
       val taxiRDD = GeoJsonReader.readToGeometryRDD(sc, dataFile, allowTopologyInvalidGeometries, skipSyntaxInvalidGeometries)
       taxiRDD.rawSpatialRDD.persist(StorageLevel.MEMORY_ONLY)
@@ -65,7 +66,7 @@ object GeoSparkRangeQuery {
     }
 
     def testSpatialRangeQuery() {
-      println("In function testSpatialTemporalRangeQuery: ")
+      println("In function testSpatialRangeQuery: ")
       var t = nanoTime()
       val taxiRDD = GeoJsonReader.readToGeometryRDD(sc, dataFile, allowTopologyInvalidGeometries, skipSyntaxInvalidGeometries)
       taxiRDD.rawSpatialRDD.persist(StorageLevel.MEMORY_ONLY)
