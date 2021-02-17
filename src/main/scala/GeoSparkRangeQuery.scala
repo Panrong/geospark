@@ -23,8 +23,7 @@ object GeoSparkRangeQuery {
     val sc = new SparkContext(conf)
 
     // input data and parameters
-    val resourceFolder = System.getProperty("user.dir") + "/src/test/resources/"
-    val dataFile = resourceFolder + "porto_taxi_head1000.geojson"
+    val dataFile = args(0)
     val allowTopologyInvalidGeometries = true // Optional for GeoJsonReader.readToGeometryRDD
     val skipSyntaxInvalidGeometries = false // Optional for GeoJsonReader.readToGeometryRDD
     val indexType = IndexType.RTREE
